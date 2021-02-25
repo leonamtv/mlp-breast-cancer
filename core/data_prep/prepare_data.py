@@ -3,7 +3,7 @@ import matplotlib.pyplot as plt
 
 from random import shuffle
 
-def split_proportionally ( data, train_proportion=0.8) :
+def split_proportionally ( data, train_proportion=0.8 ) :
     class_count, dataset = agreggate_by_class ( data )
     train_data = []
     test_data = []
