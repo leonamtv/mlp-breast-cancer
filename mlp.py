@@ -2,20 +2,12 @@
 
 from core.MLP import MLP
 from random import shuffle
-from core.data_prep.prepare_data import split_proportionally
+from core.data_prep.prepare_data import split_proportionally, filter_dataset
 
-epochs = 10000
+epochs = 100
 file_path = './data/breast-cancer-wisconsin/wdbc-norm.data'
 
-data = []
-
-with open(file_path, 'r') as file :
-    for line in file :
-        if '?' not in line :
-            full_line    = [ float(item) for item in line.split(',') ]
-            input_entry  = full_line[:30] # Capturando atributos e removendo primeira coluna
-            output_entry = full_line[30:]  # Capturando saída
-            data.append(( input_entry, output_entry ))
+data = filter_dataset ( file_path, format={ 'input_size' : 30 }, normalize=False)
 
 shuffle ( data )
 
@@ -41,7 +33,6 @@ for i in range ( 1, epochs + 1 ) :
 
     for sample in data_training:
         erro_aprox, erro_class = mlp.treinar ( sample[0], sample[1])
-        # erro_aprox, erro_class = mlp.treinar ( sample[0], [ 0 if i == 0.05 else 1 for i in sample[1]])
         erroAproxEpoca += erro_aprox
         erroClassEpoca += erro_class
 
@@ -50,3 +41,5 @@ for i in range ( 1, epochs + 1 ) :
     string += f"{ erroClassEpoca }"
     print(string)
 
+base_name = 'weights' + '_' + str(mlp.qtd_in) + 'in_' + str(mlp.qtd_h) + 'h_' + str(mlp.qtd_out) + 'out_'
+mlp.dump ( base_name )

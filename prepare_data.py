@@ -2,8 +2,6 @@
 
 import os
 
-from core.data_prep.prepare_data import filter_dataset
-
 file_path = './data/breast-cancer-wisconsin/wdbc.data'
 norm_file_path = './data/breast-cancer-wisconsin/wdbc-norm.data'
 
