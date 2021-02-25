@@ -40,7 +40,7 @@ train_split = int( 0.8 * len(data))
 train_data, test_data = data[:train_split], data[train_split:]
 
 def train ( model, train_input, train_label ) :
-    model.fit(train_input, train_label, epochs=1000)    
+    model.fit(train_input, train_label, epochs=epochs)    
 
 def test ( model, test_input, test_label ) :
     model.evaluate( test_input, test_label )
