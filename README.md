@@ -6,7 +6,7 @@ Trabalho de multilayer perceptron da disciplina de inteligência computacional, 
 
 Para que o software execute, você precisa de instalar o numpy (única dependência):
 
-```
+```bash
 pip install numpy
 ```
 
@@ -18,6 +18,6 @@ pip install numpy
 4. Balanceamento
 5. Taxa de aprendizado variável
 
-## Arquiteturas:
+## Arquiteturas
 
 Abaixo, seguem os diagramas das redes utilizadas em cada uma das bases de dados.
