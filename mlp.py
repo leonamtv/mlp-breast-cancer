@@ -4,16 +4,16 @@ from core.MLP import MLP
 from random import shuffle
 from core.data_prep.prepare_data import split_proportionally, filter_dataset
 
-file_path = './data/breast-cancer-wisconsin/wdbc-no-norm.data'
+file_path = './data/breast-cancer-wisconsin/wdbc-norm.data'
 
 data = filter_dataset ( file_path, format={ 'input_size' : 30 }, normalize=False)
 shuffle ( data )
-train_data, test_data = split_proportionally ( data, 0.7 )
+train_data, test_data = split_proportionally ( data, 0.8 )
 
-mlp = MLP(30, 4, 1, 0.03)
+mlp = MLP(30, 4, 1, 0.8)
 
 epochs = 1000
-PLOT = True
+PLOT = False
 decreases = 10
 variable_ni = False
 
@@ -44,7 +44,7 @@ for i in range ( 1, epochs + 1 ) :
     shuffle ( data_training )
 
     for sample in data_training:
-        erro_aprox, erro_class = mlp.treinar ( sample[0], sample[1])
+        erro_aprox, erro_class = mlp.treinar ( sample[0], sample[1] )
         erroAproxEpoca += erro_aprox
         erroClassEpoca += erro_class
 
