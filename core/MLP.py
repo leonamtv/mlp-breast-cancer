@@ -109,12 +109,13 @@ class MLP :
         
         O.shape = ( self.qtd_out, 1 )
 
-        squared_error  =  ( np.subtract( output_y, O )) ** 2
+        squared_error  =  ( np.subtract( output_y, O ))
         erro_direction =  [ 1 if i >= 0 else -1 for i in np.subtract( output_y, O ) ]
 
         classif = [ 0 if output <= threshold else 1 for output in O ]
 
-        erro_classif = np.sum ([ 0 if erro <= threshold else 1 for erro in np.subtract( output_y, np.array ( classif ))])
+        # erro_classif = np.sum ([ 0 if erro <= threshold else 1 for erro in np.subtract( output_y, np.array ( classif ))])
+        erro_classif = np.sum (np.subtract( output_y, np.array ( classif )))
 
         squared_error = [ x * y for x, y in zip ( squared_error, erro_direction ) ]
 
