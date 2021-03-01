@@ -28,8 +28,8 @@ class MLP :
         elif not os.path.isdir ( path ):
             raise Exception("Directory doesn't exist")
         else :
-            self.wh = np.fromfile ( os.path.join ( path, name + '_wh.npy' ), dtype=np.float32)
-            self.wo = np.fromfile ( os.path.join ( path, name + '_wo.npy' ), dtype=np.float32)
+            self.wh = np.load ( os.path.join ( path, name + '_wh.npy' ))
+            self.wo = np.load ( os.path.join ( path, name + '_wo.npy' ))
 
     def test ( self, x, y, threshold=0.5 )  :
         input_x = np.append( np.array(x.copy()), [1])
