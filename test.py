@@ -4,7 +4,6 @@ from core.MLP import MLP
 from random import shuffle
 from core.data_prep.prepare_data import split_proportionally, filter_dataset
 
-epochs = 100
 file_path = './data/breast-cancer-wisconsin/wdbc-norm.data'
 
 data = filter_dataset ( file_path, format={ 'input_size' : 30 }, normalize=False)
@@ -22,6 +21,6 @@ mlp.load ( base_name )
 for sample in test_data:
     erro_aprox, erro_class = mlp.test ( sample[0], sample[1])
 
-    string = f"{erroAprox:.15f}," 
-    string += f"{ erroClass }"
+    string = f"{erro_aprox:.15f}," 
+    string += f"{erro_class}"
     print(string)
