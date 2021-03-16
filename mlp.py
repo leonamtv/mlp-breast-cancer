@@ -4,13 +4,13 @@ from core.MLP import MLP
 from random import shuffle
 from core.data_prep.prepare_data import split_proportionally, filter_dataset
 
-file_path = './data/breast-cancer-wisconsin/wdbc-norm-bal.data'
+file_path = './data/breast-cancer-wisconsin/wdbc-norm.data'
 
 data = filter_dataset ( file_path, format={ 'input_size' : 30 }, normalize=False)
 shuffle ( data )
 train_data, test_data = split_proportionally ( data, 0.8 )
 
-mlp = MLP(30, 4, 1, 0.8)
+mlp = MLP(30, 15, 1, 0.8)
 
 epochs = 200
 PLOT = False
